@@ -2,7 +2,7 @@ package pwgen
 
 /* pwgen.go - Minimalistic Go adaptation from Theodore Ts'o's pwgen/pw_phonemes.c
  * Copyright (C) 2023 by Antti Antinoja
- * Lisence: MIT
+ * License: MIT
  */
 
 import (
