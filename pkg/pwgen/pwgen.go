@@ -182,7 +182,7 @@ func phonemeRun(size int) (*[]byte, error) {
 		// syllable ok, add it to our buffer
 		_, err := strBuf.Write(bSyl)
 		if err != nil {
-			return nil, e.Err(epfx, err)
+			return nil, err
 		}
 		// update counter
 		c = c + bSylLen
