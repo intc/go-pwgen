@@ -19,8 +19,6 @@ const (
 	Vowel     byte = 0x2
 	Dipthong  byte = 0x4
 	NotFirst  byte = 0x8
-
-	ShowDebug = false
 )
 
 type pwE struct {
@@ -128,17 +126,6 @@ func init() {
 		os.Exit(1)
 	}
 	mrand.Seed(int64(binary.LittleEndian.Uint64(b[:])))
-	if ShowDebug {
-		fmt.Printf("Element flags:\n Vowel:     %08b\n Consonant: %08b\n Dipthong:  %08b\n NotFirst:  %08b\n\n",
-			Vowel,
-			Consonant,
-			Dipthong,
-			NotFirst,
-		)
-		for _, el := range elements {
-			fmt.Printf("%3s: flags: %08b\n", string(el.bSyl), el.flags)
-		}
-	}
 	elements = elementsStd
 	numElements = len(elements)
 }
@@ -223,11 +210,6 @@ func phonemeRun(size int) (*[]byte, error) {
 	return &res, nil
 }
 
-func ActivateNoIlSet() {
-	elements = elementsNoIl
-	numElements = len(elements)
-}
-
 func PhonemeGen(size int) (*string, error) {
 	res := ""
 	for {
@@ -241,4 +223,21 @@ func PhonemeGen(size int) (*string, error) {
 		}
 	}
 	return &res, nil
+}
+
+func ActivateNoIlSet() {
+	elements = elementsNoIl
+	numElements = len(elements)
+}
+
+func PrintElements() {
+	fmt.Printf("Element flags:\n Vowel:     %08b\n Consonant: %08b\n Dipthong:  %08b\n NotFirst:  %08b\n\n",
+		Vowel,
+		Consonant,
+		Dipthong,
+		NotFirst,
+	)
+	for _, el := range elements {
+		fmt.Printf("%3s: flags: %08b\n", string(el.bSyl), el.flags)
+	}
 }
