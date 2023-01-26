@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/intc/go-pwgen"
+	"github.com/intc/go-pwgen/pkg/pwgen"
 	"os"
 	s "strconv"
 )
@@ -29,6 +29,8 @@ func main() {
 	}
 	// use NoIlSet
 	pwgen.ActivateNoIlSet()
+	// print elements
+	// pwgen.PrintElements()
 	// run
 	for n > 0 {
 		str, _ := pwgen.PhonemeGen(l)
